@@ -1,5 +1,6 @@
 package com.example.currency;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spinnerTo.setAdapter(adapterTo);
         spinnerFrom.setSelection(1);
         txt_from.setOnClickListener(this);
+        txt_from.setTypeface(Typeface.DEFAULT_BOLD);
         txt_to.setOnClickListener(this);
         btn_0.setOnClickListener(this);
         btn_1.setOnClickListener(this);
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     void setValue(String value) {
+
         if (statusChosen == 0) valueFrom += value;
         else valueTo += value;
         changeCurrency();
@@ -121,12 +124,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == txt_from.getId()) {
-            System.out.println("1111111111111111111111");
             changeStatusChosen(0);
+            txt_from.setTypeface(Typeface.DEFAULT_BOLD);
+            txt_to.setTypeface(Typeface.DEFAULT);
         }
         if (v.getId() == txt_to.getId()) {
-            System.out.println("2222222222222222222222");
             changeStatusChosen(1);
+            txt_from.setTypeface(Typeface.DEFAULT);
+            txt_to.setTypeface(Typeface.DEFAULT_BOLD);
         }
         if (v.getId() == btn_0.getId()) {
             setValue("0");
