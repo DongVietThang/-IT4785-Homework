@@ -47,6 +47,6 @@ public class CurrencyModel {
 
     @Override
     public String toString() {
-        return nation + '-' + currency;
+        return nation + " - " + currency;
     }
 }

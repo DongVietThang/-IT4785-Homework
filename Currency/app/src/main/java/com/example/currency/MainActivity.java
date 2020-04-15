@@ -64,14 +64,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txt_to = findViewById(R.id.txt_to);
         spinnerFrom = findViewById(R.id.spin_currency_from);
         spinnerTo = findViewById(R.id.spin_currency_to);
-        rateFrom = currencies.get(1).getRate();
-        rateTo = currencies.get(0).getRate();
         ArrayAdapter<String> adapterFrom = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, currencies);
         adapterFrom.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         ArrayAdapter<String> adapterTo = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, currencies);
         adapterFrom.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerFrom.setAdapter(adapterFrom);
         spinnerTo.setAdapter(adapterTo);
+        spinnerFrom.setSelection(1);
+        txt_from.setOnClickListener(this);
+        txt_to.setOnClickListener(this);
         btn_0.setOnClickListener(this);
         btn_1.setOnClickListener(this);
         btn_2.setOnClickListener(this);
@@ -96,17 +97,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     void changeCurrency() {
+        String _valueFrom = valueFrom.equals("") ? "0" : valueFrom;
+        String _valueTo = valueTo.equals("") ? "0" : valueTo;
         if (statusChosen == 0) {
-            float value = Float.parseFloat(valueFrom)*rateTo/rateFrom;
-            valueTo = Float.toString(value);
+            float value = Float.parseFloat(_valueFrom) * rateTo / rateFrom;
+            valueTo = String.format("%.1f", value);
         } else {
-            float value = Float.parseFloat(valueTo)*rateFrom/rateTo;
-            valueFrom = Float.toString(value);
+            float value = Float.parseFloat(_valueTo) * rateFrom / rateTo;
+            valueFrom = String.format("%.1f", value);
         }
+        txt_from.setText(valueFrom);
+        txt_to.setText(valueTo);
+    }
+
+    void changeStatusChosen(int status) {
+        statusChosen = status;
+        valueFrom = "";
+        valueTo = "";
+        txt_from.setText(valueFrom);
+        txt_to.setText(valueTo);
     }
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == txt_from.getId()) {
+            System.out.println("1111111111111111111111");
+            changeStatusChosen(0);
+        }
+        if (v.getId() == txt_to.getId()) {
+            System.out.println("2222222222222222222222");
+            changeStatusChosen(1);
+        }
         if (v.getId() == btn_0.getId()) {
             setValue("0");
         }
@@ -130,36 +151,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v.getId() == btn_7.getId()) {
             setValue("7");
-
         }
         if (v.getId() == btn_8.getId()) {
             setValue("8");
-            }
+        }
         if (v.getId() == btn_9.getId()) {
             setValue("9");
         }
         if (v.getId() == btn_dot.getId()) {
-
+            setValue(".");
         }
         if (v.getId() == btn_ce.getId()) {
             //Xoa so dang nhap
-            if (statusChosen == 0) valueFrom = "0";
-            else valueTo = "0";
+            if (statusChosen == 0) valueFrom = "";
+            else valueTo = "";
             changeCurrency();
         }
         if (v.getId() == btn_bs.getId()) {
             //Xoa 1 ki tu phia truoc
-//            if (result.length() > 1) result = result.substring(0, result.length() - 1);
-//            else result = "";
+            if (statusChosen == 0) valueFrom = valueFrom.substring(0, valueFrom.length() - 1);
+            else valueTo = valueTo.substring(0, valueTo.length() - 1);
+            changeCurrency();
         }
-        txt_from.setText(valueFrom);
-        txt_to.setText(valueTo);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if (statusChosen == 0) rateFrom = currencies.get(i).getRate();
-        else  rateTo = currencies.get(i).getRate();
+        if (adapterView.getId() == spinnerFrom.getId()) {
+            rateFrom = currencies.get(i).getRate();
+        }
+        if (adapterView.getId() == spinnerTo.getId()) {
+            rateTo = currencies.get(i).getRate();
+        }
+        valueFrom = "";
+        valueTo = "";
+        txt_from.setText(valueFrom);
+        txt_to.setText(valueTo);
     }
 
     @Override
