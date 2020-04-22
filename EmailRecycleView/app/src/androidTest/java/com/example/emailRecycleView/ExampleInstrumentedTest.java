@@ -1,4 +1,4 @@
-package com.example.homework94;
+package com.example.emailRecycleView;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.homework94", appContext.getPackageName());
+        assertEquals("com.example.recycleview", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.homework94;
+package com.example.emailListView;
 
 import android.os.Bundle;
 import android.widget.ListView;

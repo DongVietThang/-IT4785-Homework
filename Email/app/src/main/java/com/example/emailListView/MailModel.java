@@ -1,4 +1,4 @@
-package com.example.homework94;
+package com.example.emailListView;
 
 public class MailModel {
     private String fullName;

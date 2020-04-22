@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/image_favorite"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_star_border" />
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/text_letter"
+        android:text="Hello World"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/text_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_name"
+        android:layout_marginStart="16dp"
+        android:layout_toStartOf="@id/image_favorite"
+        android:layout_toEndOf="@id/text_letter"
+        android:singleLine="true"
+        android:text="Hello World Hello World Hello World Hello World "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_subject"
+        android:layout_marginStart="16dp"
+        android:layout_toStartOf="@id/image_favorite"
+        android:layout_toEndOf="@id/text_letter"
+        android:singleLine="true"
+        android:text="Hello World Hello World Hello World Hello World"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/text_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="12:00 PM"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/text_letter"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/round_background"
+        android:gravity="center"
+        android:text="T"
+        android:textColor="#FFF"
+        android:textSize="40sp" />
+</RelativeLayout>
