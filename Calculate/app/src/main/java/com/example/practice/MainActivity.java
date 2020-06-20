@@ -1,6 +1,8 @@
 package com.example.practice;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -170,6 +172,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         txt_cal.setText(calculation);
         txt_result.setText(result);
+        txt_result.setTextColor(Color.parseColor("#000000"));
+        txt_cal.setText(txt_cal.getText().toString());
+        txt_cal.setTypeface(null, Typeface.ITALIC);
     }
 
     String calculate(String calculation) {
